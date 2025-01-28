@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import ActivityCalendar from "react-activity-calendar";
 import "./App.css";
@@ -22,7 +23,7 @@ const App = () => {
   // Track last time data was fetched, initialize from localStorage or current time
   const [lastCheck, setLastCheck] = useState(() => {
     const savedLastCheck = localStorage.getItem("lastCheckTime");
-    return savedLastCheck || new Date().toISOString();
+    return savedLastCheck || new Date().toLocaleString("en-UK");
   });
 
   // Store contribution data with persistence, initialize from localStorage or empty data
@@ -94,7 +95,7 @@ const App = () => {
       // Set status to okay with last check time message
       setStatus({
         state: "okay",
-        message: `Last checked: ${lastCheck}`,
+        message: `Last refreshed: ${currentTime}`,
       });
     } catch (error) {
       // Handle any errors during the fetch process
@@ -111,15 +112,14 @@ const App = () => {
     // Initial fetch of contributions when component mounts
     fetchContributions("akmtasdikulislam");
 
-    // Set up an interval to fetch contributions every 10 minutes
+    // Set up an interval to fetch contributions every 5 minutes
     const intervalId = setInterval(() => {
       // Fetch updated contribution data periodically
       fetchContributions("akmtasdikulislam");
-    }, 600000); // 10 minutes interval (600000 milliseconds)
+    }, 1000 * 60 * 5); // 5 minutes interval (300,000 milliseconds)
 
     // Cleanup function to clear interval when component unmounts
     return () => clearInterval(intervalId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array means this effect runs only once on mount
 
   // Theme configuration for contribution graph
