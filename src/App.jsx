@@ -4,6 +4,12 @@ import ActivityCalendar from "react-activity-calendar";
 import "./App.css";
 
 // Component imports
+import {
+  GearIcon,
+  MarkGithubIcon,
+  RepoIcon,
+  SyncIcon,
+} from "@primer/octicons-react";
 import GithubUser from "./components/GithubUser/GithubUser";
 import StatusBar from "./components/StatusBar/StatusBar";
 import TodayContribution from "./components/TodayContribution/TodayContribution";
@@ -50,7 +56,7 @@ const App = () => {
       // Set initial loading status to indicate data fetching
       setStatus({
         state: "loading",
-        message: "Loading",
+        message: "Refreshing",
       });
 
       // Fetch contribution data from GitHub API for the specified username
@@ -133,7 +139,13 @@ const App = () => {
       {/* Container for the main content */}
       <div className="github-contribution-graph">
         {/* Title for the contribution chart section */}
-        <p className="title">Github Contribution Chart</p>
+        <div className="title-bar">
+          <p className="title">
+            <MarkGithubIcon className="github-icon" size={22} />
+            Github Contribution Chart
+          </p>
+          <GearIcon className="settings-icon" size={18} />
+        </div>
         {/* Render ActivityCalendar only if there's sufficient contribution data */}
         {contirbutionData.length > 10 && (
           <ActivityCalendar
@@ -160,6 +172,7 @@ const App = () => {
           className="refresh-btn"
           onClick={() => fetchContributions("akmtasdikulislam")}
         >
+          <SyncIcon className="icon" />
           Refresh
         </button>
         {/* Button to open GitHub's new repository page in a new tab */}
@@ -167,6 +180,7 @@ const App = () => {
           className="new-repo"
           onClick={() => window.open("https://github.com/new", "_blank")}
         >
+          <RepoIcon className="icon" />
           New Repo
         </button>
         {/* Display today's contribution count */}
