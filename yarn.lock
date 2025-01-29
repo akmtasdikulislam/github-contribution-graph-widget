@@ -437,6 +437,11 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@primer/octicons-react@^19.14.0":
+  version "19.14.0"
+  resolved "https://registry.yarnpkg.com/@primer/octicons-react/-/octicons-react-19.14.0.tgz#09259c1807d074af971c7858999c6a7969e1ad23"
+  integrity sha512-EKeavGV7s2HYac3ybb+6vfyqHGMUeG+OlZAus5ORfEjzXlorDAIjZ59fszVJj9DI6ArfFK/Cvg8V4JRfeUHjcw==
+
 "@rollup/rollup-android-arm-eabi@4.32.0":
   version "4.32.0"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.32.0.tgz#42a8e897c7b656adb4edebda3a8b83a57526452f"
